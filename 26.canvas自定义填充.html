@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas自定义填充</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		canvas{
+			display: block;
+			background: #ccc;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" height="500" width="800"></canvas>
+	<script type="text/javascript">
+	
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext('2d');
+			var pic = document.createElement("img");
+			pic.src = "./file/p.png";
+
+			pic.onload = function(){
+				//创建自定义填充规则
+				var gz = cv.createPattern(pic,"repeat");
+				// var gz = cv.createPattern(pic,"repeat-x");
+				// var gz = cv.createPattern(pic,"repeat-y");
+				// var gz = cv.createPattern(pic,"no-repeat");
+
+				cv.fillStyle = gz;
+				cv.fillRect(20,20,800,500);
+			}
+
+	</script>
+</body>
+</html>

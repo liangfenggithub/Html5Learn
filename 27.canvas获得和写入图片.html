@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas获得和写入图片</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		canvas{
+			display: block;
+			background: #ccc;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas" height="500" width="800"></canvas>
+	<script type="text/javascript">
+	
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext('2d');
+			var pic = document.createElement("img");
+			pic.src = "./file/p.png";
+
+			pic.onload = function(){
+				alert("aaa");
+				cv.drawImage(pic,20,20);
+
+
+				//为什么无效？？？
+
+				//获得画布图像信息
+				var partPic = cv.getImageData(40,40,60,60);
+
+				//写入画布信息
+				cv.putImageData(partPic,500,500);
+			}
+
+	</script>
+</body>
+</html>

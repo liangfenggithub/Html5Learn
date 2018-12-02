@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制扇形</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		canvas{
+			display: block;
+			background: #ccc;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" height="500" width="800"></canvas>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext('2d');
+
+		
+			cv.strokeStyle = "red";
+			cv.lineWidth = "5";
+			
+			cv.beginPath();
+			cv.moveTo(200,200);//设置起点
+			//画圆弧
+			cv.arc(200,200,150,0,30*Math.PI/180);//参数分别是距离左边，距离上边，半径，起始弧度，终止弧度。
+			cv.closePath();//关闭路径
+			//填充
+			cv.fillStyle = "green";
+			cv.fill();
+
+
+
+			cv.beginPath();
+			cv.moveTo(200,200);//设置起点
+			//画圆弧
+			cv.arc(200,200,150,30*Math.PI/180,60*Math.PI/180);//参数分别是距离左边，距离上边，半径，起始弧度，终止弧度。
+			cv.closePath();//关闭路径
+			//填充
+			cv.fillStyle = "red";
+			cv.fill();
+
+			cv.beginPath();
+			cv.moveTo(200,200);//设置起点
+			//画圆弧
+			cv.arc(200,200,150,60*Math.PI/180,180*Math.PI/180);//参数分别是距离左边，距离上边，半径，起始弧度，终止弧度。
+			cv.closePath();//关闭路径
+			//填充
+			cv.fillStyle = "dodgerblue";
+			cv.fill();
+
+			cv.beginPath();
+			cv.moveTo(200,200);//设置起点
+			//画圆弧
+			cv.arc(200,200,150,180*Math.PI/180,260*Math.PI/180);//参数分别是距离左边，距离上边，半径，起始弧度，终止弧度。
+			cv.closePath();//关闭路径
+			//填充
+			cv.fillStyle = "pink";
+			cv.fill();
+
+			// ？？？为什么把圆形画完整就会覆盖前面的颜色呢？？？
+
+			// cv.beginPath();
+			// cv.moveTo(200,200);//设置起点
+			// //画圆弧
+			// cv.arc(200,200,150,260*Math.PI/180,3600*Math.PI/180);//参数分别是距离左边，距离上边，半径，起始弧度，终止弧度。
+			// cv.closePath();//关闭路径
+			// //填充
+			// cv.fillStyle = "yellow";
+			// cv.fill();
+		}
+	</script>
+</body>
+</html>

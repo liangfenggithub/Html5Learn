@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas绘制路径</title>
+
+</head>
+<body>
+	<canvas id="canvas" width="800" height="500"></canvas>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext("2d");
+
+			//开启路径
+			cv.beginPath();
+
+			//指定路径起点
+			cv.moveTo(30,30);
+
+			//指定终点
+			cv.lineTo(100,200); //距离左边，距离上边
+
+			//再指定下一点，canvas是确定路径的点，在进行绘制
+			cv.lineTo(200,30);
+			cv.lineTo(300,200);
+			cv.lineTo(400,30);
+			cv.closePath();//关闭路径，将最后一点连接第一点，形成一个封闭路径。
+
+			//指定线条的颜色和粗细
+			cv.strokeStyle = "dodgerblue";
+			cv.lineWidth= 5;
+
+			//指定边界类型
+			cv.lineJoin = "round";//指定圆角
+
+			//绘制路径
+			cv.stroke();	
+
+			//还可以填充
+			cv.fillStyle="yellow";
+			cv.fill(); //
+		}
+	</script>
+</body>
+</html>

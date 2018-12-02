@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>画布控制</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		canvas{
+			display: block;
+			background: #ccc;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" height="500" width="800"></canvas>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext('2d');
+
+			//画布控制，要放在绘画之前
+			
+			//画布缩放,横向1.5，竖向0.8
+			cv.scale(1.5,0.8);//默认为不旋转为1
+
+			//画布平移，向右50，向下50
+			cv.translate(50,50);
+
+			//画布旋转
+			cv.rotate(30*(Math.PI/180));
+
+			cv.strokeStyle = "red";
+			cv.lineWidth = "5";
+			cv.beginPath();//开始路径
+			cv.moveTo(40,40);//起点
+			cv.lineTo(200,300);//节点1
+			cv.lineTo(360,40);
+			cv.closePath();//封闭路径
+			cv.stroke();//绘制路径
+		}
+	</script>
+</body>
+</html>

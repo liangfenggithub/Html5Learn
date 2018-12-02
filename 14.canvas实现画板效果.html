@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas实现画板效果</title>
+	<style type="text/css">
+		canvas{
+			background: #666;
+			display: block;
+			position: relative;
+			margin:0 auto;
+		}
+	</style>
+</head>
+
+<body>
+	<canvas id="canvas" width="800" height="500">
+		
+	</canvas>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext("2d");
+			cv.strokeStyle = "yellow";
+
+			//鼠标按下事件
+			canvas.onmousedown = function(e){
+
+				//开启路径绘制
+				cv.beginPath();
+				// 获得鼠标位置
+				var ev = window.event || e;
+				var mousex = ev.layerX || ev.offsetX;
+				var mousey = ev.layerY || ev.offsetY;
+				console.log(mousex);
+				console.log(mousey);
+				//设置起点
+				cv.moveTo(mousex,mousey);
+
+				//加鼠标移动事件
+				canvas.onmousemove = function(e){
+					var ev = window.event || e;
+					var newx = ev.layerX || ev.offsetX;
+					var newy = ev.layerY || ev.offsetY;
+					console.log(newx+"--"+newy)
+					cv.lineTo(newx,newy);
+
+					//绘制路径
+					cv.stroke();
+				}
+			}
+
+			//鼠标抬起事件,取消绘图（利用清除移动事件来实现）
+			canvas.onmouseup = function(){
+				canvas.onmousemove = null;
+			}
+		}
+	</script>
+</body>
+</html>

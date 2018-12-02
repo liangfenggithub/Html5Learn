@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+	<style type="text/css">
+		canvas{
+			background: #ccc;
+			display: block; /*canvas是行内块级元素*/
+			margin:20px auto;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- canvas相当于一个画板 -->
+	<!-- 注意：画板canvas 的宽高不要用css来定义 -->
+	<canvas id="canvas" width="800" height="500">
+		
+	</canvas>
+
+	<script type="text/javascript">
+		window.onload= function(){
+			var canvas = document.getElementById("canvas");
+			// 1. 获得画板上的画布环境
+			var cv = canvas.getContext("2d"); //获得2d的绘画环境
+
+			//2. 设置填充颜色
+			cv.fillStyle = "yellow";
+
+			//3. 画实心矩形
+			cv.fillRect(100,100,500,300);//参数分别是，距离左边，距离右边，宽度，高度
+
+			//4. 设置描边线条颜色和线条粗细
+			cv.strokeStyle= "pink";
+			cv.lineWidth = 5;
+
+			//5. 画空心矩形
+			cv.strokeRect(300,200,400,260);//参数通rillRect
+
+			//6. 清理画布内容
+			cv.clearRect(220,170,200,160);
+
+		}
+	</script>
+</body>
+</html>

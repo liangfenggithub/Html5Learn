@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas绘制图片</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		canvas{
+			display: block;
+			background: #ccc;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" height="500" width="800"></canvas>
+	<img id='pic' src="./file/p.png" hidden>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext('2d');
+			var pic = document.getElementById("pic");
+
+			//必须得图片载入完成后才能写入到canvas中,如果不在window.onload中那么就得在图片.onload中画图。
+			
+			cv.drawImage(pic,10,10);
+			
+			//除载入已有图片还可以动态载入图片
+			var newimg = document.createElement("img");
+			newimg.src = "./file/p.png";
+			// drawImage("图像资源",裁切开始x位置，裁切开始y位置，宽，高，放置到x位置，放置到y位置,放置后款，放置后高)
+			cv.drawImage(newimg,50,100,100,50,300,300,100,50);
+	
+
+			
+		}
+	</script>
+</body>
+</html>

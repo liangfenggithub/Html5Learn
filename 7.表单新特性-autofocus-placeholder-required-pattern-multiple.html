@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>autofos</title>
+</head>
+<body>
+	<form>
+		<!-- 1. placeholder是输入提示 -->
+		<!-- 2. autofocus 自动聚焦 -->
+		姓名：<input type="text"  placeholder="请输入姓名" autofocus>
+		<br>
+		性别：<input type="text">
+		<br>
+		年龄：<input type="number">
+		<br>
+		<!-- 3. required是要求表单值不能为空 -->
+		邮箱：<input type="email" placeholder="请输入标准邮箱格式" required>
+		<br>
+		<!-- 4. pattern是正则表单验证 -->
+		手机号：<input type="text" pattern="\d{11}" placeholder="请输入11位手机号">
+		<br>
+		<!-- 5.multiple是允许同时上传多个文件 -->
+		头像：<input type="file" multiple >可同时上传多个文件
+		<br>
+		密码：<input type="password">
+		<br>
+		<input type="submit" name="">
+	</form>
+</body>
+</html>

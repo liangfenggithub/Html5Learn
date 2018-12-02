@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas绘制简单验证码</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		canvas{
+
+			display: block;
+			background: #ccc;
+			margin: 150px auto;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" height="50" width="200"></canvas>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext('2d');
+			cv.fillStyle = "yellow";
+			cv.font= "30px arial";
+			var words = "QAZWSXEDCRFVTGBYHNUJMIKOLP";
+			for(var i = 0; i<4; i++){
+				//随机颜色
+				var r = Math.floor(Math.random()*256);//结果就是随机0-255之间的整数
+				var g = Math.floor(Math.random()*256);
+				var b = Math.floor(Math.random()*256);
+				cv.fillStyle = 'rgb('+r+','+g+','+b+')';//为啥加上加号？
+					
+				//随机角度
+				var d = Math.floor(Math.random()*(5+1-(-5))+(-5));//公式是：生成从x-y之间的一个随机数的公式是：val = Math.floor(Math.random()*((y+1-x)+x))
+				cv.rotate(d*Math.PI/180);
+
+				//随机字母
+				var n = Math.floor(Math.random()*(words.length-1));
+				//随机x位置
+				var x = Math.floor(Math.random()*((i*50+20)+1-i*50)+i*50);//这个公式源公式哪里来的
+				//随机y位置
+				var y = Math.floor(Math.random()*(45+1-30)+30);//????
+
+				cv.fillText(words[n],x,y);
+
+				
+			}
+			
+	
+
+			
+		}
+	</script>
+</body>
+</html>

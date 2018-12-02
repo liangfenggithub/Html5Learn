@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas绘制简单验证码</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		canvas{
+
+			display: block;
+			background: #ccc;
+			margin: 150px auto;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" height="50" width="200"></canvas>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext('2d');
+			cv.fillStyle = "yellow";
+			cv.font= "30px arial";
+			var words = "QAZWSXEDCRFVTGBYHNUJMIKOLP";
+			for(var i = 0; i<4; i++){
+				//随机字母
+				var r = Math.floor(Math.random()*(words.length-1));
+				//随机x位置
+				var x = Math.floor(Math.random()*((i*50+20)+1-i*50)+i*50);//这个公式源公式哪里来的
+				//随机y位置
+				var y = Math.floor(Math.random()*(45+1-30)+30);//????
+
+				cv.fillText(words[r],x,y);
+			}
+			
+	
+
+			
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sessionStorage</title>
+</head>
+<body>
+	<!--注意，必须以web服务器方式打开才行，以文件形式打开无效.
+	 sessionStorage 存储的数据在浏览器关闭后就清理掉
+	sessionStorage 写入数据的页面和获得数据的页面要在**同一个浏览器标签**中打开才可以。 -->
+	<br>
+	<input type="button" id="set" value="写入数据" name="">
+	<script type="text/javascript">
+		document.getElementById("set").onclick = function(){
+			sessionStorage.setitem("name","刀锋战士");
+		}
+	</script>
+</body>
+</html>

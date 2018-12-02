@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>语义化标签</title>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding: 0px;
+		}
+		header{
+			width: 1000px;
+			height: 100px;
+			background: dodgerblue;
+			margin:0 auto;
+		}
+		nav{
+			width: 1000px;
+			height: 50px;
+			margin:0px auto;
+			background: pink;
+		}
+		nav a{
+			float:left;
+			color:#000;
+			text-decoration: none;
+			line-height: 50px;
+			margin-left:20px;
+			text-align: center;
+		}
+		.main{
+			width: 1000px;
+			height: 500px;
+			margin:0px auto;
+			border: solid 1px cornflowerblue;
+		}
+		.main article{
+			height: 500px;
+			width:700px;
+			float:left;
+			background: lightgreen;
+		}
+		.main aside{
+
+			height: 500px;
+			width: 280px;
+			float:right;
+			background: yellow;
+		}
+		footer{
+			height: 100px;
+			width:1000px;
+			margin:0 auto;
+			background: mediumpurple;
+			
+		}
+		.main header .desc{
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		
+	</header>
+	<nav>
+		<a href="">导航条</a>
+		<a href="">导航条</a>
+		<a href="">导航条</a>
+		<a href="">导航条</a>
+		<a href="">导航条</a>
+		<a href="">导航条</a>
+		<a href="">导航条</a>
+		<a href="">导航条</a>
+		<a href="">导航条</a>
+		<a href="">导航条</a>
+	</nav>
+	<div class="main">
+		<article>
+			<h1>常见的高科技电子产品</h1>
+			<time datetime="2018-11-30 16:50:50">2018年11月30日16:50:36</time>
+			<p class="desc">本文详细介绍了大家在日常生活中常用的一些电子产品</p>
+			<!-- 文章章节 -->
+			<section>
+				<h3>手机</h3>
+				<p>
+				手机体积小，<mark>重量轻</mark> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<ins>手机几乎人手一部</ins> 
+				quis nostrud exercitation <del>之前因为体积手机体积很大 </del> ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</section>
+			<section>
+				<h3>电脑</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</section>
+			<section>
+				<h3>ipad</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</section>
+		</article>
+
+		<aside>
+			<h3>javascript for循环</h3>
+			<code>
+				var i = 0;
+				for (i = 0; i< 10; i++){
+					console.log(i);
+				}
+			</code>
+			<progress value="50" min="0" max="100">
+		</aside>
+	</div>
+	<footer>
+		<address>天津市南开区玉泉路2号</address>
+	</footer>
+</body>
+</html>

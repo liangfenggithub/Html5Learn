@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas绘制文字</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		canvas{
+			display: block;
+			background: #ccc;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" height="500" width="800"></canvas>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext('2d');
+
+			//设置字体和大小
+			cv.font = "30px 微软雅黑";
+			//设置左右文字对齐
+			cv.textAlign = "center"; //默认是left
+			//设置上下文字对齐
+			cv.textBaseline = "middle";//默认是top
+
+			cv.fillText("canvas绘制文字",100,100);//绘制实心文字
+			cv.strokeText("canvas绘制文字",100,300);//绘制空心文字
+
+			//获得文字长度
+			console.log(cv.measureText("canvas绘制文字"));
+
+			//显示文字基线，用于辅助显示对齐效果
+			cv.beginPath();
+			cv.moveTo(100,0);
+			cv.lineTo(100,500);
+			cv.stroke();
+
+			cv.beginPath();
+			cv.moveTo(0,100);
+			cv.lineTo(800,100);
+			cv.stroke();
+
+
+			
+		}
+	</script>
+</body>
+</html>

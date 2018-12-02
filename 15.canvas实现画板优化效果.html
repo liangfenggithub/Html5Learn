@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas实现画板效果</title>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding: 0px;
+		}
+		canvas{
+			background: #ccc;
+			display: block;
+			position: relative;
+			margin: 20px auto;
+		}
+
+		.tool{
+			width: 800px;
+			height: 50px;
+			margin: 20px auto;
+		}
+		.tool span{
+			margin-left:50px;
+		}
+		.tool ul{
+			width: 100px;
+			height: 30px;
+			border:solid 1px red;
+			padding: 5px;
+			float: right;
+
+		}
+		.tool ul li{
+			width: 50px;
+			height: 30px;
+			line-height: 30px;
+			float:left;
+			list-style:none;
+		}
+		
+		#pen{
+			background:red;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="tool">
+		<span>选择画笔颜色</span><input type="color" id="color" name="">
+		<span>选择画笔粗细</span> <input type="range" id="r" min="0" max="50" value="3"><span id="rval">3</span>
+		<ul>
+			<li id="pen">画笔</li>
+			<li id="earse">橡皮檫</li>
+		</ul>
+	</div>
+	
+	<canvas id="canvas" width="800" height="500">
+		
+	</canvas>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext("2d");
+			cv.strokeStyle = "yellow";
+			cv.lineWidth = "3";
+			//鼠标按下事件
+			canvas.onmousedown = function(e){
+
+				//开启路径绘制
+				cv.beginPath();
+				// 获得鼠标位置
+				var ev = window.event || e;
+				var mousex = ev.layerX || ev.offsetX;
+				var mousey = ev.layerY || ev.offsetY;
+				console.log(mousex);
+				console.log(mousey);
+				//设置起点
+				cv.moveTo(mousex,mousey);
+
+				//加鼠标移动事件
+				canvas.onmousemove = function(e){
+					var ev = window.event || e;
+					var newx = ev.layerX || ev.offsetX;
+					var newy = ev.layerY || ev.offsetY;
+					console.log(newx+"--"+newy)
+					cv.lineTo(newx,newy);
+
+					//绘制路径
+					cv.stroke();
+				}
+			}
+
+			//鼠标抬起事件,取消绘图（利用清除移动事件来实现）
+			canvas.onmouseup = function(){
+				canvas.onmousemove = null;
+			}
+
+			//点击选择画笔
+			document.getElementById("pen").onclick = function(){
+				//改变画笔和橡皮的背景颜色
+				this.style.background = "red";
+				document.getElementById("earse").style.background = "white";
+				//修改canvas的线条颜色为颜色选择器的颜色
+				cv.strokeStyle = document.getElementById("color").value;
+				alert(cv.strokeStyle);
+
+			}
+
+			//点击选择橡皮
+			document.getElementById("earse").onclick = function(){
+				this.style.background = "red";
+				document.getElementById("pen").style.background = "white";
+				//修改canvas的线条颜色，橡皮其实就是把线条颜色改为背景颜色
+				cv.strokeStyle = "#ccc";
+				alert("你可以擦除了");
+			}
+
+			//修改画笔粗细
+			document.getElementById("r").onchange = function(){
+				console.log(this.value);
+				document.getElementById("rval").innerHTML = this.value;
+				cv.lineWidth = this.value;
+			}
+
+			//选择画笔颜色
+			document.getElementById("color").onchange = function(){
+				// alert(this.value);
+				cv.strokeStyle = this.value;
+			}
+
+
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>画布控制</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		canvas{
+			display: block;
+			background: #ccc;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" height="500" width="800"></canvas>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext('2d');
+
+		
+			cv.strokeStyle = "red";
+			cv.lineWidth = "5";
+			//画圆弧
+			cv.arc(300,300,150,0,150*Math.PI/180);//参数分别是距离左边，距离上边，半径，起始弧度，终止弧度。
+			cv.stroke();//绘制路径
+
+			//填充
+			cv.fillStyle = "green";
+			cv.fill();
+		}
+	</script>
+</body>
+</html>

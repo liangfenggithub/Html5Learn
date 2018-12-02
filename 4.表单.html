@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单</title>
+
+</head>
+<body>
+	<form action="my.php">
+		姓名：<input type="text">
+		<br>
+		年龄：<input type="text">
+		<br>
+		密码：<input type="password">
+		<br>
+		以下为html5表单新增标签
+		<br>
+		邮箱：<input type="email"> 输入必须符合aaa@bb.com，否则提交不了，下同。
+		<br>
+		URL：<input type="url"> 必须符合http://www.a.com格式
+		<br>
+		数字：<input type="number" min="0" step="2" max="50" value="10">获得光标后可以通过上下箭头调整数组
+		<br>
+		颜色：<input id="color" type="color"> 提交值就是颜色值
+		<br>
+		日期：<input type="date"> 点击后出现日期选择器，兼容性样式不一致，一般用第三方
+		<br>
+		滑块：<input id="r" type="range" min="0" max="50" ><span id="rsan">3</span>
+		<br>
+
+		<input type="submit" name="">
+
+	</form>
+	<script type="text/javascript">
+		window.onload= function(){
+			document.getElementById("r").onchange= function(){
+				console.log(this.value);
+				document.getElementById("rsan").innerHTML = this.value;
+			}
+			document.getElementById('color').onchange = function(){
+				alert(this.value);
+			}
+		}
+		
+	</script>
+</body>
+</html>

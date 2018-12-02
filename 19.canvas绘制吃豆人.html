@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制扇形</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		canvas{
+			display: block;
+			background: #ccc;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" height="500" width="800"></canvas>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById("canvas");
+			var cv = canvas.getContext('2d');
+
+		
+			cv.strokeStyle = "red";
+			cv.lineWidth = "5";
+			cv.beginPath();
+			cv.moveTo(300,300);//设置起点
+			//画圆弧
+			cv.arc(300,300,150,-30*Math.PI/180,30*Math.PI/180,true);//参数分别是距离左边，距离上边，半径，起始弧度，终止弧度，方向，默认为false逆时针，true为顺时针。
+			cv.closePath();
+			cv.stroke();//绘制路径
+
+			//填充
+			cv.fillStyle = "yellow";
+			cv.fill();
+
+			cv.arc(500,300,30,0,2*Math.PI);
+			cv.fill();
+
+			cv.arc(600,300,30,0,2*Math.PI);
+			cv.fill();
+
+			cv.arc(700,300,30,0,2*Math.PI);
+			cv.fill();
+
+		}
+	</script>
+</body>
+</html>

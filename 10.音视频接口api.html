@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>音视频接口api</title>
+	<style type="text/css">
+		body{
+			padding: 100px
+		}
+		#pro{
+			width:600px;
+			height: 10px;
+			background: rgba(0,0,0,0.1);
+			position: relative;/*为得到鼠标在里面的位置，提供参考*/
+		}
+		#pro div{
+			width: 1px;
+			height: 10px;
+			background: dodgerblue;
+		}
+	</style>
+</head>
+<body>
+
+
+	<input type="button" value="播放" id="play" name="">
+	<input type="button" value="暂停" id="pause" name="">
+	<input type="button" value="快进5s" id="go5s" name="">
+	<input type="button" value="后退5s" id="back5s" name="">
+	<input type="button" value="静音" id="muted" name="">
+	<input type="button" value="提高音量" id="volumeup" name="">
+	<input type="button" value="减少音量" id="volumedown" name="">
+	<br>
+	<br>
+	播放进度	
+	<br>
+	<div id="pro">
+		<div id="ls"></div>
+	</div>
+	<!-- video插入视频，属性基本与audio相同，poster是视频封面 -->
+	<video src="./file/mov.ogg" id="v"  poster="./file/p.png"></video>
+
+	<script type="text/javascript">
+
+		window.onload = function(){
+			var v = document.getElementById("v"); //视频
+			var pro = document.getElementById("pro");//进度条底层
+			var ls = document.getElementById("ls");//进度条上层
+
+			document.getElementById("play").onclick = function(){
+				v.play();//开始播放视频
+			}
+
+			document.getElementById("pause").onclick = function(){
+				v.pause();
+			}
+
+			//快进5秒0
+			document.getElementById("go5s").onclick = function(){
+				//获得当前播放位置
+				var ctime = v.currentTime; //获取播放时间
+				// alert(ctime);
+				v.currentTime = ctime+5;
+
+			}
+
+			//后退5s
+			document.getElementById("back5s").onclick = function(){
+				//获得当前播放位置
+				var ctime = v.currentTime; //获取播放时间
+				// alert(ctime);
+				v.currentTime = ctime-5;
+			}
+
+			//静音
+			document.getElementById("muted").onclick = function(){
+				
+				v.muted = !v.muted;
+			}
+
+	
+			//调高音量
+			document.getElementById("volumeup").onclick = function(){
+
+
+				//获得当前音量
+				var curvolume = v.volume;
+				//赋值新的音量
+				var newvoluem = curvolume+0.1;
+				v.volume = newvoluem>1?1:newvoluem;
+			}
+
+			//减少音量
+			document.getElementById("volumedown").onclick = function(){
+				//获得当前音量
+				var curvolume = v.volume;
+				//赋值新的音量
+				var newvoluem = curvolume-0.1;
+				v.volume = newvoluem<=0?0:newvoluem;
+			}
+
+			//进度条显示视频播放位置
+			v.onplay= function(){
+				setInterval(function(){
+
+					//当前播放位置
+					var ctime = v.currentTime;
+					console.log(ctime);
+
+					//视频总长度
+					var alltime = v.duration;
+
+					//计算进度条长度
+					var lswidth = ctime/alltime*600;
+					console.log(lswidth);
+
+					document.getElementById("ls").style.width = lswidth+"px";
+
+				},1000)
+			}
+
+			//点击进度条定位视频播放
+			pro.onclick = function(){
+				var ev = window.event || e;
+				//获得鼠标位置
+				var mx = ev.layerX || offsetX;
+				console.log(mx);
+				//计算播放为值
+				var settime = v.duration*(mx/600);
+
+				//设置视频播放位置
+				v.currentTime = settime;
+
+				//设置进度条位置
+				ls.style.width = mx+ "px";
+			}
+		}
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sessionStorage</title>
+</head>
+<body>
+<!--注意，必须以web服务器方式打开才行，以文件形式打开无效.
+			localStorage存储的数据，即使不在一个标签打开也能获得。
+	localStorage存储的是永久数据，如果不清理浏览器缓存，无论在什么时候打开，数据都存在。
+	  -->
+
+	<br>
+	<input type="button" id="set" value="读出永久local数据" name="">
+	<input type="button" id="del" value="删掉name数据" name="">
+	<input type="button" id="len" value="获取数据数量" name="">
+	<input type="button" id="clr" value="清理所有数据" name="">
+	<script type="text/javascript">
+		//读出数据
+		document.getElementById("set").onclick = function(){
+			var name = localStorage.getitem("name","刀锋战士");
+			alert(name);
+		}
+
+		//删掉localStorage数据
+		document.getElementById("del").onclick = function(){
+			localStorage.removeItem("name");
+		}
+
+		//获取数据数量
+		document.getElementById("len").onclick = function(){
+			alert(localStorage.length);
+		}
+
+		//清理所有数据
+		document.getElementById("clr").onclick = function(){
+			localStorage.clear();
+		}
+	</script>
+</body>
+</html>
